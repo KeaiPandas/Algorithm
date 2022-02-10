@@ -29,3 +29,18 @@ xhr.timeout = 1000
 xhr.ontimeout = function() {
   alert("Request did not return in a second.")
 }
+
+// Fetch请求
+let payload = JSON.stringify({
+  foo: 'bar'
+})
+
+let jsonHeaders = new Headers({
+  'Content-Type': 'application/json'
+})
+
+fetch('/send-me-json', {
+  method: 'POST',
+  body: payload,
+  headers: jsonHeaders
+})
