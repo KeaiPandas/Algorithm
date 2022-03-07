@@ -96,3 +96,26 @@ console.log(reg.test('abc'))
 console.log(reg.test('aaa'))
 console.log(reg.test('aaaa'))
 console.log(reg.test('aaaaaaaaa'))
+
+// 设定模式，只能输入英文字母，数字，下划线，短横线且大于等于8
+var reg = /^[a-zA-Z0-9_-]{8,}$/
+console.log(reg.test('aa'))
+console.log(reg.test('abc'))
+console.log(reg.test('aaadsad1234124'))
+console.log(reg.test('--dw-q2412@'))
+console.log(reg.test('a--_ed12qead-a21'))
+
+// 中括号 字符集合 匹配方括号中的任意字符
+var reg = /^[abc]$/  // 表示a也可以b也可以c也可以
+
+// 大括号 量词符 里面表示重复的次数
+var reg = /^abc{3}$/ // 它只是让c重复三次 abccc
+console.log(reg.test('abc'))
+console.log(reg.test('abcabcabc'))
+console.log(reg.test('abccc'))
+
+// 小括号 表示优先级
+var reg = /^(abc){3}$/ // 它是让abc重复三次
+console.log(reg.test('abc'))
+console.log(reg.test('abcabcabc'))
+console.log(reg.test('abccc'))
