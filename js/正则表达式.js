@@ -119,3 +119,4 @@ var reg = /^(abc){3}$/ // 它是让abc重复三次
 console.log(reg.test('abc'))
 console.log(reg.test('abcabcabc'))
 console.log(reg.test('abccc'))
+parseInt
