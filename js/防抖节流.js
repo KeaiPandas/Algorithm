@@ -1,10 +1,11 @@
-function debounce(fn) {
-  let timeOut = null
-  return function () {
-    clearTimeout(timeOut)
-    timeOut = setTimeout(() => {
-      fn.apply(this. arguments)
-    }, 500)
+function debounce(fn, time){
+  let timer = null
+  return function(){
+    clearTimeout(timer)
+    
+    timer = setTimeout(() => {
+      fn.call(this.arguments)
+    }, time)
   }
 }
 
@@ -12,23 +13,17 @@ function sayHi() {
   console.log('防抖成功')
 }
 
-var inp = document.getElementById('inp')
-inp.addEventListener('input', debounce(sayHi))
+debounce(sayHi, 1000)()
 
-function throttle(fn) {
+
+function throttle(fn, time){
   let canRun = true
-  return function () {
+  return function(){
     if (!canRun) return
     canRun = false
     setTimeout(() => {
-      fn.apply(this.arguments)
+      fn.call(this.arguments)
       canRun = true
-    }, 500)
+    }, time)
   }
 }
-
-function sayHi(e) {
-  console.log(e.target.innerWidth, e.target.innerHeight)
-}
-
-window.addEventListener('resize', throttle(sayHi))
